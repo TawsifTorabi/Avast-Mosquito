@@ -10,3 +10,9 @@ Don't use a long time. Cover your ears. The sound output can give you a bad head
 #Source Audio:
 
 https://drive.google.com/uc?export=download&id=0Bz8X6FgnifH3YWo4QzRmNUFYUEk
+
+Developer Site: grplusbd.net
+Developer Blog: blog.grplusbd.net
+More From This Developer: app.grplusbd.net
+
+Developed by @TawsifTorabi 
