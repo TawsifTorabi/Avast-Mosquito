@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
+<style>
+	body{font-family: arial;}
+	.container{margin-top: 20px; padding-bottom: 20px; padding-top: 30px; background-color: black; color: white; border-radius: 9px; margin-left: 20px; margin-right: 20px;}
+	button{padding: 5px 10px; font-size: 25px; border: none; border-radius: 5px;}
+	#loading, #printvol {background-color: white; padding: 5px 10px; border-radius: 8px; color: black;}
+	#playerbtn{font-size: 100px;}
+</style>
+<center>
+	<div class="container">
+	
+	<h1>Anti - Mosquito</h1>
+	<h3>Ultrasound Mosquito Repelent</h3>
+	<h4>Gives Sound Output at 15kHz what is gonna keep mosquitos away.</h4>
+
+	<audio id="player" src="https://drive.google.com/uc?export=download&id=0Bz8X6FgnifH3YWo4QzRmNUFYUEk" loop="loop"></audio></br>
+	
+	<button id ="playerbtn" onclick="togglePlay()"><i class="fa fa-play-circle" aria-hidden="true"></i></button>
+	</br>
+	</br>
+	<button id="mutebtn" onclick="mute()"><i class="fa fa-volume-off" aria-hidden="true"></i></button>
+	&nbsp;&nbsp;
+	</br>
+	</br>
+	<span id="printvol"></span>
+	&nbsp;
+	<input id="volume" type ="range" min ="0.0" max="1.0" value="0.2" step ="0.1" style="vertical-align: middle;"/>
+	</br>
+	</br>
+	&nbsp;&nbsp;
+	Audio File Status:
+	<span id="loading"></span></br></br></br>
+	<span style="color: red;">HARMFUL FOR YOUR EARS, BE CAREFUL!</span></bR>
+	<span style="color: orange;">File Size is 3.5 MB, Load at your own Risk.</span></bR>
+	<span style="color: yellow;">Press 'ESC' for instant Mute</span></bR>
+	</div>
+</center>
+
+<script>
+
+//mute or unmute audio
+function mute(){
+	var audioElm = document.getElementById('player'); 
+	audioElm.muted = !audioElm.muted;
+}
+
+
+//loading status
+function loop() {
+
+	var audio = document.getElementById('player');
+	var percentages = document.getElementById('loading');
+	var buffered = audio.buffered;
+	var loaded;
+	var played;
+
+  if (buffered.length) {
+    loaded = 100 * buffered.end(0) / audio.duration;
+	var cent = loaded.toFixed(2);
+	var inner = 
+    percentages.innerHTML = "<span style='font-weight:bold; color: red;'>Loading... "+ cent +"%</span>";
+	
+	if(cent == 100.00){
+	
+		    percentages.innerHTML = '<span style="color: green;"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i> Loaded!</span>';
+	}
+	
+  }
+
+  setTimeout(loop, 50);
+}
+
+loop();
+
+
+
+
+//KEYBOARD FUNCTIONS **EDITING KEY VALUES CAN MAKE THE SCRIPT CRUSHED**
+
+document.onkeyup=function(e) {
+				return true;
+			}
+	
+	document.onkeydown=function(e){
+			
+				//instant mute
+					if(e.which == 27) {
+						 mute();
+						 return false;
+					}
+
+					if(e.which == 173) {
+						 mute();
+						 return false;
+					}
+
+					if(e.which == 179) {
+						 togglePlay();
+						 return false;
+					}
+					
+			}
+
+
+		
+		
+		// volume controls
+		
+		 document.getElementById('volume').addEventListener('change', function() {
+		 
+		  document.getElementById('player').volume = this.value;
+		  var valunew = this.value * 100;
+		  document.getElementById('printvol').innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i> ' + valunew;
+		  if(document.getElementById('player').volume == 0){
+			document.getElementById('printvol').innerHTML = '<span style="color: red;"><i class="fa fa-volume-off" aria-hidden="true"></i> Muted</span>';
+		  }
+		  
+		 
+		}, false);
+
+
+		//onload, make the volume half
+		window.onload= function(){
+			document.getElementById('player').volume = 0.2;
+			var html = document.getElementById('player').volume * 100;
+			document.getElementById('printvol').innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i> ' + html;
+		}
+		
+	
+	
+
+
+
+		//toggle play pause button
+
+		var Audio = document.getElementById("player");
+		var isPlaying = false;
+		function togglePlay() {
+		  if (isPlaying) {
+			Audio.pause()
+		  } else {
+			Audio.play();
+		  }
+		};
+		Audio.onplaying = function() {
+		  isPlaying = true;
+		  document.getElementById('playerbtn').innerHTML = '<i class="fa fa-pause-circle" aria-hidden="true"></i>';
+		};
+		Audio.onpause = function() {
+		  isPlaying = false;
+		  document.getElementById('playerbtn').innerHTML = '<i class="fa fa-play-circle" aria-hidden="true"></i>';
+		};
+
+</script>
