@@ -57,7 +57,7 @@
 <script>
 //Load The Audio File using button to save users wish and internet DATA :v
 function loadfile(){
-	var audiofile= 'https://drive.google.com/uc?export=download&id=0Bz8X6FgnifH3YWo4QzRmNUFYUEk';
+	var audiofile= 'anti.mosquito.sound.wav'; //audio file link
 	document.getElementById('player').src = audiofile;
 }
 
@@ -82,19 +82,19 @@ function loop() {
     loaded = 100 * buffered.end(0) / audio.duration;
 	var cent = loaded.toFixed(2);
 	var inner = 
-    percentages.innerHTML = "<span style='font-weight:bold; color: red;'>Loading... "+ cent +"%</span>";
+    percentages.innerHTML = "<span style='font-weight:bold; color: red;'>Loading... "+ cent +"%</span>"; //loading status text
 	
 	if(cent == 100.00){
 	
-		    percentages.innerHTML = '<span style="color: green;"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i> Loaded!</span>';
+		    percentages.innerHTML = '<span style="color: green;"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i> Loaded!</span>'; // loaded text
 	}
 	
   }
 
-  setTimeout(loop, 50);
+  setTimeout(loop, 50); //Refresh Function
 }
 
-loop();
+loop(); //load function on loading page
 
 
 
