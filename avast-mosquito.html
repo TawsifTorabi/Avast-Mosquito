@@ -29,7 +29,7 @@
 
 	<audio id="player" src="" loop="loop"></audio></br>
 	
-	<button id ="loaderbtn" onclick="loadfile();">Press To Load Audio</button>
+	<button id ="loaderbtn" onclick="loadfile();">Load Audio</button>
 	</br>
 	</br>
 	</br>
@@ -46,8 +46,10 @@
 	</br>
 	</br>
 	&nbsp;&nbsp;
-	Audio File Status:
-	<span id="loading"><span style='font-weight:bold; color: red;'>Loading... 0.0%</span></span></br></br></br>
+	Audio File Status
+	</br>
+	</br>
+	<span id="loading"><span style='font-weight:bold; color: red;'>Press The 'Load Audio' Button to Load</span></span></br></br></br>
 	<span style="color: red;">HARMFUL FOR YOUR EARS, BE CAREFUL!</span></bR>
 	<span style="color: orange;">File Size is 3.5 MB, Load at your own Risk.</span></bR>
 	<span style="color: yellow;">Press 'ESC' for instant Mute</span></bR>
@@ -57,7 +59,7 @@
 <script>
 //Load The Audio File using button to save users wish and internet DATA :v
 function loadfile(){
-	var audiofile= 'anti.mosquito.sound.wav'; //audio file link
+	var audiofile= 'anti.mosquito.sound.wav';
 	document.getElementById('player').src = audiofile;
 }
 
@@ -82,19 +84,19 @@ function loop() {
     loaded = 100 * buffered.end(0) / audio.duration;
 	var cent = loaded.toFixed(2);
 	var inner = 
-    percentages.innerHTML = "<span style='font-weight:bold; color: red;'>Loading... "+ cent +"%</span>"; //loading status text
+    percentages.innerHTML = "<span style='font-weight:bold; color: red;'>Loading... "+ cent +"%</span>";
 	
 	if(cent == 100.00){
 	
-		    percentages.innerHTML = '<span style="color: green;"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i> Loaded!</span>'; // loaded text
+		    percentages.innerHTML = '<span style="color: green;"><i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i> Loaded!</span>';
 	}
 	
   }
 
-  setTimeout(loop, 50); //Refresh Function
+  setTimeout(loop, 50);
 }
 
-loop(); //load function on loading page
+loop();
 
 
 
